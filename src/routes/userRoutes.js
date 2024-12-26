@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { body } = require("express-validator");
-const { getAllUsers, createUser } = require("../controllers/userController");
+const {
+  getAllUsers,
+  createUser,
+  deleteUser,
+} = require("../controllers/userController");
 
 // Validation middleware
 const userValidation = [
@@ -12,5 +16,6 @@ const userValidation = [
 
 router.get("/", getAllUsers);
 router.post("/", userValidation, createUser);
+router.delete("/:id", deleteUser);
 
 module.exports = router;
